@@ -8,6 +8,8 @@ target 'rn_helpshift_test' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'helpshift-react-native', :path => '../node_modules/helpshift-react-native'
+
   target 'rn_helpshift_testTests' do
     inherit! :complete
     # Pods for testing

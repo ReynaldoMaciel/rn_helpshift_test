@@ -3244,10 +3244,9 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-helpshift-react-native@^7.8.0:
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/helpshift-react-native/-/helpshift-react-native-7.8.0.tgz#106138ab0e16c5bcb6e7ee42f3fd8d4478453c60"
-  integrity sha512-Cew3avMnlrPjvfq8QCOmxJgRfooYIqRwtE/MrXOyUYtaGeaToII1NXxG1z2wgHksGhuhR3ASfgCoEllMZm0eHw==
+"helpshift-react-native@https://github.com/AlexsanderManzoli/helpshift-react-native.git#v7.8.4":
+  version "7.9.2"
+  resolved "https://github.com/AlexsanderManzoli/helpshift-react-native.git#4701d9453525d8503c449c77a065d2a83f323d62"
   dependencies:
     prop-types "^15.7.2"
 

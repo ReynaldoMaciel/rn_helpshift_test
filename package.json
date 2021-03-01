@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "helpshift-react-native": "^7.8.0",
+    "helpshift-react-native": "https://github.com/AlexsanderManzoli/helpshift-react-native.git#v7.8.4",
     "react": "16.13.1",
     "react-native": "0.63.4"
   },

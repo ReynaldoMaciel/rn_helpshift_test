@@ -1,30 +1,49 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   ScrollView,
-  View,
-  Text,
   StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Platform} from 'react-native';
+import Helpshift from 'helpshift-react-native';
 
 const App: () => React$Node = () => {
+  async function init() {
+    const apiKey = 'c5c522b08559cf0439ffbb5c63369595';
+    const domain = 'wine.helpshift.com';
+    const iosAppId = 'wine_platform_20201030140221771-446e07abeb46e78';
+    const androidAppId = 'wine_platform_20201030140221799-de0b9230e5117f9';
+
+    const appId = Platform.select({ios: iosAppId, android: androidAppId});
+    Helpshift.init(apiKey, domain, appId);
+  }
+
+  async function login() {
+    const user = {
+      email: 'reynaldommaciel@gmail.com', // required if no identifier
+      name: 'Reynaldo Marinho', // optional
+    };
+    Helpshift.login(user);
+  }
+
+  async function showFAQS() {
+    Helpshift.showFAQs();
+  }
+
+  useEffect(() => {
+    init();
+    setTimeout(() => {
+      login();
+    }, 3000);
+    setTimeout(() => {
+      showFAQS();
+    }, 6000);
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -38,33 +57,11 @@ const App: () => React$Node = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Learn More</Text>
+            <Text style={styles.sectionDescription}>
+              Read the docs to discover what to do next:
+            </Text>
           </View>
         </ScrollView>
       </SafeAreaView>
